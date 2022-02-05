@@ -1,6 +1,7 @@
 import java.util.*
 
 // определены дата класс и связный список
+// TODO придумать другой способ поиска по списку тк затратно для памяти
 data class Cat(val colour: String, val age: Int, val weight: Float)
 var linkedListOfCats = LinkedList<Pair<String, Cat>>()
 var listOfCats = LinkedList<String>()
