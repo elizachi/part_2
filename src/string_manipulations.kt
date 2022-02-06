@@ -21,18 +21,17 @@ fun getArguments(str: String): String {
 } // проверка введённых данных на корректность по типу данных
 fun isArgumentsCorrect(str: String): Boolean {
     val piecesOfCat = getArguments(str).split(" ").toTypedArray()
-    if(isDigitIntCat(piecesOfCat[1]) && isDigitFloatCat(piecesOfCat[2])) {
+    if(isInt(piecesOfCat[1]) && isFloat(piecesOfCat[2])) {
         return true
     }
     return false
 } // доп. функция для проверки типа данных
-fun isDigitIntCat(pieceOfCat: String): Boolean {
+fun isInt(pieceOfCat: String): Boolean {
     val filterPiece = pieceOfCat.filter { it.isDigit() }
     if(filterPiece == pieceOfCat) return true
     return false
 } // доп. функция для проверки типа данных
-// TODO оптимизировать
-fun isDigitFloatCat(pieceOfCat: String): Boolean {
+fun isFloat(pieceOfCat: String): Boolean {
     val nums = pieceOfCat.split('.')
     if(nums.size <= 2) {
         for(element in nums) {

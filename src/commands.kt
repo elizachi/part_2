@@ -1,7 +1,6 @@
 import java.util.*
 
 // определены дата класс и связный список
-// TODO придумать другой способ поиска по списку тк затратно для памяти
 data class Cat(val colour: String, val age: Int, val weight: Float)
 var linkedListOfCats = LinkedList<Pair<String, Cat>>()
 var listOfCats = LinkedList<String>()
@@ -17,12 +16,15 @@ fun start() {
 } // команда добавления нового элемента
 fun create(catInfo: String) {
     if(isArgumentsCorrect(catInfo)) {
-        val catProperties = getArguments(catInfo).split(" ") // создаю список параметров кота
+        // вырезаю id
+        val catId = getFirstWord(catInfo)
+        // создаю список параметров кота
+        val catProperties = getArguments(catInfo).split(" ")
         // data class для нового кота
         val catDataClass = Cat(catProperties[0], catProperties[1].toInt(), catProperties[2].toFloat())
         // пара <id> <data class>
-        val newCat = Pair(getFirstWord(catInfo), catDataClass)
-        if (linkedListOfCats.indexOf(newCat) == -1) { // добавляю кота в связный список, если его там нет
+        val newCat = Pair(catId, catDataClass)
+        if (listOfCats.indexOf(catId) == -1) { // добавляю кота в связный список, если его там нет
             linkedListOfCats.add(newCat)
             listOfCats.add(getFirstWord(catInfo))
             print("${getFirstWord(catInfo)} successfully added.\n")
